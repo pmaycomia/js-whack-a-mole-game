@@ -19,7 +19,7 @@ body {
     margin-right: 18px;
 }
 
-#mole-img {
-    height: 170px;
-    width: 200px;
+.mole {
+    background-image: url(diglett.png);
+    background-size: cover;
 }
