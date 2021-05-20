@@ -13,11 +13,16 @@ function randomSquare() {
 
     let randomPosition = square[Math.floor(Math.random() * 9)]
     randomPosition.classList.add('mole')
+
+    hitPosition = randomPosition
 }
 
-//add mole in class list
+randomSquare()
 
-//hitposition is random
+square.forEach(id => {
+    id.addEventListener('mouseup', randomSquare)
+})
+
 
 //foreach square add eventlistener 'mouseup'
 //if id is same as hit position add 1 point
