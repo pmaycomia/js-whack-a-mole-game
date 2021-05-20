@@ -1,9 +1,10 @@
 const square = document.querySelectorAll('.square')
 const mole = document.querySelectorAll('.mole')
-const score = document.querySelectorAll('#score')
-const timer = document.querySelectorAll('#time-left')
+const score = document.querySelector('#score')
+const timer = document.querySelector('#time-left')
 
 let result = 0
+let hitPosition = 0
 
 //create randomSquare function
 function randomSquare() {
@@ -14,13 +15,17 @@ function randomSquare() {
     let randomPosition = square[Math.floor(Math.random() * 9)]
     randomPosition.classList.add('mole')
 
-    hitPosition = randomPosition
+    hitPosition = randomPosition.id
 }
 
-randomSquare()
-
 square.forEach(id => {
-    id.addEventListener('mouseup', randomSquare)
+    id.addEventListener('mouseup', () => {
+        if (id.id === hitPosition) {
+            result = result + 1
+            score.textContent = result
+            console.log(hitPosition, result);
+        }
+    })
 })
 
 
@@ -28,7 +33,11 @@ square.forEach(id => {
 //if id is same as hit position add 1 point
 
 //create movemole function
-//create a timer var
-//setinterval
 
-//create countdown function
+function moveMole() {
+    let timerId = null
+    timerId = setInterval(randomSquare, 1000);
+}
+
+moveMole()
+    //create countdown function
