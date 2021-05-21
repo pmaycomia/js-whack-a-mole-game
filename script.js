@@ -5,6 +5,7 @@ const timer = document.querySelector('#time-left')
 
 let result = 0
 let hitPosition = 0
+let currentTime = timer.textContent
 
 //create randomSquare function
 function randomSquare() {
@@ -24,15 +25,10 @@ square.forEach(id => {
             result = result + 1
             score.textContent = result
             console.log(hitPosition, result);
+            randomSquare()
         }
     })
 })
-
-
-//foreach square add eventlistener 'mouseup'
-//if id is same as hit position add 1 point
-
-//create movemole function
 
 function moveMole() {
     let timerId = null
@@ -40,4 +36,15 @@ function moveMole() {
 }
 
 moveMole()
-    //create countdown function
+
+function countDown() {
+    currentTime--
+    timer.textContent = currentTime
+
+    if (currentTime === 0) {
+        clearInterval(timerId)
+        alert('Game over! Score: ' + result)
+    }
+}
+
+timerId = setInterval(countDown, 1000)
